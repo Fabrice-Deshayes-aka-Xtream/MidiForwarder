@@ -42,6 +42,9 @@
             this.ConnectingLabel = new System.Windows.Forms.Label();
             this.ConnectedLabel = new System.Windows.Forms.Label();
             this.ListeningLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.NoteOffButton = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lowerPanel = new System.Windows.Forms.Panel();
             this.TabbedPanels = new System.Windows.Forms.TabControl();
             this.MidiMonitorTab = new System.Windows.Forms.TabPage();
@@ -99,6 +102,7 @@
             this.FilterEventsLabel = new System.Windows.Forms.Label();
             this.NoteOffCheckBox = new System.Windows.Forms.CheckBox();
             this.AboutTab = new System.Windows.Forms.TabPage();
+            this.DisplayChangelogButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
@@ -110,12 +114,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.DisplayChangelogButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.NoteOffButton = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.statusStrip.SuspendLayout();
             this.upperPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.lowerPanel.SuspendLayout();
             this.TabbedPanels.SuspendLayout();
             this.MidiMonitorTab.SuspendLayout();
@@ -124,8 +126,6 @@
             this.ReceiveGroupBox.SuspendLayout();
             this.EventFilterTab.SuspendLayout();
             this.AboutTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // InputDevicesComboBox
@@ -246,6 +246,39 @@
             this.ListeningLabel.TabIndex = 7;
             this.ListeningLabel.Text = "listening...";
             this.ListeningLabel.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MidiForwarder.Properties.Resources.Logo_Xtream;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 106);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // NoteOffButton
+            // 
+            this.NoteOffButton.Image = ((System.Drawing.Image)(resources.GetObject("NoteOffButton.Image")));
+            this.NoteOffButton.Location = new System.Drawing.Point(326, 85);
+            this.NoteOffButton.Name = "NoteOffButton";
+            this.NoteOffButton.Size = new System.Drawing.Size(170, 28);
+            this.NoteOffButton.TabIndex = 2;
+            this.NoteOffButton.Text = "Midi reset / all notes off";
+            this.NoteOffButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.NoteOffButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.NoteOffButton.UseVisualStyleBackColor = true;
+            this.NoteOffButton.Click += new System.EventHandler(this.NoteOffButton_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MidiForwarder.Properties.Resources.midi;
+            this.pictureBox2.Location = new System.Drawing.Point(343, -5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(142, 74);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // lowerPanel
             // 
@@ -593,7 +626,7 @@
             // KeySignatureCheckBox
             // 
             this.KeySignatureCheckBox.AutoSize = true;
-            this.KeySignatureCheckBox.Location = new System.Drawing.Point(9, 248);
+            this.KeySignatureCheckBox.Location = new System.Drawing.Point(10, 248);
             this.KeySignatureCheckBox.Name = "KeySignatureCheckBox";
             this.KeySignatureCheckBox.Size = new System.Drawing.Size(89, 17);
             this.KeySignatureCheckBox.TabIndex = 32;
@@ -637,7 +670,7 @@
             // TimeSignatureCheckBox
             // 
             this.TimeSignatureCheckBox.AutoSize = true;
-            this.TimeSignatureCheckBox.Location = new System.Drawing.Point(9, 225);
+            this.TimeSignatureCheckBox.Location = new System.Drawing.Point(10, 225);
             this.TimeSignatureCheckBox.Name = "TimeSignatureCheckBox";
             this.TimeSignatureCheckBox.Size = new System.Drawing.Size(94, 17);
             this.TimeSignatureCheckBox.TabIndex = 28;
@@ -907,6 +940,19 @@
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
             // 
+            // DisplayChangelogButton
+            // 
+            this.DisplayChangelogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisplayChangelogButton.Image = global::MidiForwarder.Properties.Resources.Octocat;
+            this.DisplayChangelogButton.Location = new System.Drawing.Point(123, 257);
+            this.DisplayChangelogButton.Name = "DisplayChangelogButton";
+            this.DisplayChangelogButton.Size = new System.Drawing.Size(242, 50);
+            this.DisplayChangelogButton.TabIndex = 16;
+            this.DisplayChangelogButton.Text = "Display CHANGELOG\r\non github";
+            this.DisplayChangelogButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DisplayChangelogButton.UseVisualStyleBackColor = true;
+            this.DisplayChangelogButton.Click += new System.EventHandler(this.DisplayChangelogButton_Click);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -1014,52 +1060,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Fabrice Deshayes aka Xtream";
             // 
-            // DisplayChangelogButton
-            // 
-            this.DisplayChangelogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisplayChangelogButton.Image = global::MidiForwarder.Properties.Resources.Octocat;
-            this.DisplayChangelogButton.Location = new System.Drawing.Point(123, 257);
-            this.DisplayChangelogButton.Name = "DisplayChangelogButton";
-            this.DisplayChangelogButton.Size = new System.Drawing.Size(242, 50);
-            this.DisplayChangelogButton.TabIndex = 16;
-            this.DisplayChangelogButton.Text = "Display CHANGELOG\r\non github";
-            this.DisplayChangelogButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.DisplayChangelogButton.UseVisualStyleBackColor = true;
-            this.DisplayChangelogButton.Click += new System.EventHandler(this.DisplayChangelogButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MidiForwarder.Properties.Resources.Logo_Xtream;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 106);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // NoteOffButton
-            // 
-            this.NoteOffButton.Image = ((System.Drawing.Image)(resources.GetObject("NoteOffButton.Image")));
-            this.NoteOffButton.Location = new System.Drawing.Point(326, 85);
-            this.NoteOffButton.Name = "NoteOffButton";
-            this.NoteOffButton.Size = new System.Drawing.Size(170, 28);
-            this.NoteOffButton.TabIndex = 2;
-            this.NoteOffButton.Text = "Midi reset / all notes off";
-            this.NoteOffButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.NoteOffButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.NoteOffButton.UseVisualStyleBackColor = true;
-            this.NoteOffButton.Click += new System.EventHandler(this.NoteOffButton_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::MidiForwarder.Properties.Resources.midi;
-            this.pictureBox2.Location = new System.Drawing.Point(343, -5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(142, 74);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
             // MidiForwarderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1078,6 +1078,8 @@
             this.statusStrip.PerformLayout();
             this.upperPanel.ResumeLayout(false);
             this.upperPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.lowerPanel.ResumeLayout(false);
             this.TabbedPanels.ResumeLayout(false);
             this.MidiMonitorTab.ResumeLayout(false);
@@ -1091,8 +1093,6 @@
             this.EventFilterTab.PerformLayout();
             this.AboutTab.ResumeLayout(false);
             this.AboutTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

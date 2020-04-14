@@ -47,6 +47,8 @@ namespace MidiForwarder
         // are we currently listening for midi events from network ?
         static bool listening = false;
 
+        static bool disableFilterCheckedChange = true;
+
         public MidiForwarderForm()
         {
             InitializeComponent();
@@ -55,7 +57,7 @@ namespace MidiForwarder
             ReceivePortTextBox.Text = Settings.Default.receivePort;
             SendToIpTextBox.Text = Settings.Default.sendIp;
             SendToPortTextBox.Text = Settings.Default.sendPort;
-            FilterCheckBox_CheckedChanged(null, null); // init midi event types filter bool
+            InitFilterCheckBox();
         }
 
         private void InitOrRefreshDevicesList()
@@ -366,8 +368,7 @@ namespace MidiForwarder
         }
 
         private void MidiForwarderForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Settings.Default.Save();
+        {            
             NetworkComms.Shutdown();
         }
 
@@ -379,7 +380,7 @@ namespace MidiForwarder
             Settings.Default.receivePort = ReceivePortTextBox.Text;
             Settings.Default.sendIp = SendToIpTextBox.Text;
             Settings.Default.sendPort = SendToPortTextBox.Text;
-
+            Settings.Default.Save();
         }
 
         // return ip adress of local machine
@@ -424,6 +425,8 @@ namespace MidiForwarder
 
         private void FilterCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (disableFilterCheckedChange) return;
+
             Settings.Default.FilterNormalSysEx = NormalSysExCheckBox.Checked;
             Settings.Default.FilterEscapeSysEx = EscapeSysExCheckBox.Checked;
             Settings.Default.FilterSequenceNumber = SequenceNumberCheckBox.Checked;
@@ -463,6 +466,52 @@ namespace MidiForwarder
             Settings.Default.FilterSongPositionPointer = SongPositionPointerCheckBox.Checked;
             Settings.Default.FilterSongSelect = SongSelectCheckBox.Checked;
             Settings.Default.FilterTuneRequest = TuneRequestCheckBox.Checked;
+            Settings.Default.Save();
+        }
+
+        private void InitFilterCheckBox()
+        {
+            disableFilterCheckedChange = true;
+            NormalSysExCheckBox.Checked = Settings.Default.FilterNormalSysEx;
+            EscapeSysExCheckBox.Checked = Settings.Default.FilterEscapeSysEx;
+            SequenceNumberCheckBox.Checked = Settings.Default.FilterSequenceNumber;
+            TextCheckBox.Checked = Settings.Default.FilterText;
+            CopyrightNoticeCheckBox.Checked = Settings.Default.FilterCopyrightNotice;
+            SequenceTrackNameCheckBox.Checked = Settings.Default.FilterSequenceTrackName;
+            InstrumentNameCheckBox.Checked = Settings.Default.FilterInstrumentName;
+            LyricCheckBox.Checked = Settings.Default.FilterLyric;
+            MarkerCheckBox.Checked = Settings.Default.FilterMarker;
+            CuePointCheckBox.Checked = Settings.Default.FilterCuePoint;
+            ProgramNameCheckBox.Checked = Settings.Default.FilterProgramName;
+            DeviceNameCheckBox.Checked = Settings.Default.FilterDeviceName;
+            ChannelPrefixCheckBox.Checked = Settings.Default.FilterChannelPrefix;
+            PortPrefixCheckBox.Checked = Settings.Default.FilterPortPrefix;
+            EndOfTrackCheckBox.Checked = Settings.Default.FilterEndOfTrack;
+            SetTempoCheckBox.Checked = Settings.Default.FilterSetTempo;
+            SmpteOffsetCheckBox.Checked = Settings.Default.FilterSmpteOffset;
+            TimeSignatureCheckBox.Checked = Settings.Default.FilterTimeSignature;
+            KeySignatureCheckBox.Checked = Settings.Default.FilterKeySignature;
+            SequencerSpecificCheckBox.Checked = Settings.Default.FilterSequencerSpecific;
+            UnknownMetaCheckBox.Checked = Settings.Default.FilterUnknownMeta;
+            CustomMetaCheckBox.Checked = Settings.Default.FilterCustomMeta;
+            NoteOffCheckBox.Checked = Settings.Default.FilterNoteOff;
+            NoteOnCheckBox.Checked = Settings.Default.FilterNoteOn;
+            NoteAftertouchCheckBox.Checked = Settings.Default.FilterNoteAftertouch;
+            ControlChangeCheckBox.Checked = Settings.Default.FilterControlChange;
+            ProgramChangeCheckBox.Checked = Settings.Default.FilterProgramChange;
+            ChannelAftertouchCheckBox.Checked = Settings.Default.FilterChannelAftertouch;
+            PitchBendCheckBox.Checked = Settings.Default.FilterPitchBend;
+            TimingClockCheckBox.Checked = Settings.Default.FilterTimingClock;
+            StartCheckBox.Checked = Settings.Default.FilterStart;
+            ContinueCheckBox.Checked = Settings.Default.FilterContinue;
+            StopCheckBox.Checked = Settings.Default.FilterStop;
+            ActiveSensingCheckBox.Checked = Settings.Default.FilterActiveSensing;
+            ResetCheckBox.Checked = Settings.Default.FilterReset;
+            MidiTimeCodeCheckBox.Checked = Settings.Default.FilterMidiTimeCode;
+            SongPositionPointerCheckBox.Checked = Settings.Default.FilterSongPositionPointer;
+            SongSelectCheckBox.Checked = Settings.Default.FilterSongSelect;
+            TuneRequestCheckBox.Checked = Settings.Default.FilterTuneRequest;
+            disableFilterCheckedChange = false;
         }
 
         private void DisplayChangelogButton_Click(object sender, EventArgs e)
