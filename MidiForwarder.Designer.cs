@@ -104,11 +104,11 @@
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.DisplayChangelogButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.NetworkCommsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.MidiForwarderLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.DryWetMidiLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -923,11 +923,11 @@
             // 
             this.AboutTab.Controls.Add(this.DisplayChangelogButton);
             this.AboutTab.Controls.Add(this.label9);
-            this.AboutTab.Controls.Add(this.linkLabel3);
+            this.AboutTab.Controls.Add(this.NetworkCommsLinkLabel);
             this.AboutTab.Controls.Add(this.label8);
             this.AboutTab.Controls.Add(this.label7);
-            this.AboutTab.Controls.Add(this.linkLabel2);
-            this.AboutTab.Controls.Add(this.linkLabel1);
+            this.AboutTab.Controls.Add(this.MidiForwarderLinkLabel);
+            this.AboutTab.Controls.Add(this.DryWetMidiLinkLabel);
             this.AboutTab.Controls.Add(this.label6);
             this.AboutTab.Controls.Add(this.label5);
             this.AboutTab.Controls.Add(this.label4);
@@ -956,22 +956,24 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label9.Location = new System.Drawing.Point(94, 326);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(315, 13);
             this.label9.TabIndex = 15;
             this.label9.Text = "special thanks to Didier Martini for beta testing and music advices";
             // 
-            // linkLabel3
+            // NetworkCommsLinkLabel
             // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(162, 128);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(164, 13);
-            this.linkLabel3.TabIndex = 14;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "https://www.networkcomms.net/";
-            this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.NetworkCommsLinkLabel.AutoSize = true;
+            this.NetworkCommsLinkLabel.Location = new System.Drawing.Point(162, 128);
+            this.NetworkCommsLinkLabel.Name = "NetworkCommsLinkLabel";
+            this.NetworkCommsLinkLabel.Size = new System.Drawing.Size(159, 13);
+            this.NetworkCommsLinkLabel.TabIndex = 14;
+            this.NetworkCommsLinkLabel.TabStop = true;
+            this.NetworkCommsLinkLabel.Text = "https://www.networkcomms.net";
+            this.NetworkCommsLinkLabel.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.NetworkCommsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NetworkCommsLinkLabel_LinkClicked);
             // 
             // label8
             // 
@@ -991,27 +993,29 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "using melanchall / drywetmidi library";
             // 
-            // linkLabel2
+            // MidiForwarderLinkLabel
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(88, 54);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(313, 13);
-            this.linkLabel2.TabIndex = 11;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder";
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.MidiForwarderLinkLabel.AutoSize = true;
+            this.MidiForwarderLinkLabel.Location = new System.Drawing.Point(88, 54);
+            this.MidiForwarderLinkLabel.Name = "MidiForwarderLinkLabel";
+            this.MidiForwarderLinkLabel.Size = new System.Drawing.Size(313, 13);
+            this.MidiForwarderLinkLabel.TabIndex = 11;
+            this.MidiForwarderLinkLabel.TabStop = true;
+            this.MidiForwarderLinkLabel.Text = "https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder";
+            this.MidiForwarderLinkLabel.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.MidiForwarderLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MidiForwarderLinkLabel_LinkClicked);
             // 
-            // linkLabel1
+            // DryWetMidiLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(142, 91);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(204, 13);
-            this.linkLabel1.TabIndex = 10;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/melanchall/drywetmidi";
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.DryWetMidiLinkLabel.AutoSize = true;
+            this.DryWetMidiLinkLabel.Location = new System.Drawing.Point(142, 91);
+            this.DryWetMidiLinkLabel.Name = "DryWetMidiLinkLabel";
+            this.DryWetMidiLinkLabel.Size = new System.Drawing.Size(204, 13);
+            this.DryWetMidiLinkLabel.TabIndex = 10;
+            this.DryWetMidiLinkLabel.TabStop = true;
+            this.DryWetMidiLinkLabel.Text = "https://github.com/melanchall/drywetmidi";
+            this.DryWetMidiLinkLabel.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.DryWetMidiLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DryWetMidiLinkLabel_LinkClicked);
             // 
             // label6
             // 
@@ -1173,11 +1177,11 @@
         private System.Windows.Forms.CheckBox EscapeSysExCheckBox;
         private System.Windows.Forms.CheckBox NormalSysExCheckBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel NetworkCommsLinkLabel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel MidiForwarderLinkLabel;
+        private System.Windows.Forms.LinkLabel DryWetMidiLinkLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

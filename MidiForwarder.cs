@@ -516,14 +516,37 @@ namespace MidiForwarder
 
         private void DisplayChangelogButton_Click(object sender, EventArgs e)
         {
+            OpenLinkInDefaultBrowser("https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder/blob/master/CHANGELOG.md");
+        }
+
+
+        private void MidiForwarderLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLinkInDefaultBrowser("https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder");
+        }
+
+        private void DryWetMidiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLinkInDefaultBrowser("https://github.com/melanchall/drywetmidi");
+        }
+
+        private void NetworkCommsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLinkInDefaultBrowser("https://www.networkcomms.net");
+        }
+
+        private void OpenLinkInDefaultBrowser(String link)
+        {
             try
             {
-                System.Diagnostics.Process.Start("https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder/blob/master/CHANGELOG.md");
+                System.Diagnostics.Process.Start(link);
             }
             catch (Exception exception)
             {
                 MessageBox.Show("Error occured : " + exception.Message + ". You may not have defined a windows default web browser");
             }
+
         }
+
     }
 }
