@@ -152,6 +152,19 @@
         RK5CYII=
 </value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Xtream Midi Forwarder is a client/server software.
+It listen to midi events on a specified port coming from another instance of Midi Forwarder
+(on local network or from Internet). 
+
+If you want to receive Midi events from a friend's Midi Forwarder instance over Internet:
+- Choose a receive port (for example 1666)
+- Configure Port Address Translation (PAT) on your internet box to redirect incoming Internet TCP/UDP 
+   requests on port 1666 to your PC local ip address (port 1666 too).
+- give him your public IP adress+port (1666).
+
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAMAEBAAAAEAIABoBAAANgAAACAgAAABACAAqBAAAJ4EAAAwMAAAAQAgAKglAABGFQAAKAAAABAA
