@@ -44,6 +44,7 @@ namespace MidiForwarder
         // network connection to send midi events to another instance of Midi Forwarder
         static Connection cnx;
 
+        // are we currently listening for midi events from network ?
         static bool listening = false;
 
         public MidiForwarderForm()
@@ -51,9 +52,10 @@ namespace MidiForwarder
             InitializeComponent();
             EventsListBox.Items.Add("");
             statusStrip.Items[0].Text = "Local IP: " + GetLocalIPAddress() + " / Public IP: " + GetPublicIP();
-            ReceivePortTextBox.Text = MidiForwarder.Properties.Settings.Default.receivePort;
-            SendToIpTextBox.Text = MidiForwarder.Properties.Settings.Default.sendIp;
-            SendToPortTextBox.Text = MidiForwarder.Properties.Settings.Default.sendPort;
+            ReceivePortTextBox.Text = Settings.Default.receivePort;
+            SendToIpTextBox.Text = Settings.Default.sendIp;
+            SendToPortTextBox.Text = Settings.Default.sendPort;
+            FilterCheckBox_CheckedChanged(null, null); // init midi event types filter bool
         }
 
         private void InitOrRefreshDevicesList()
@@ -122,7 +124,7 @@ namespace MidiForwarder
                     {
                         NetworkComms.Shutdown();
                     }
-                    catch(CommsException ce)
+                    catch (CommsException ce)
                     {
                         Console.WriteLine("CommsException occurs : " + ce.ToString());
                     }
@@ -161,6 +163,8 @@ namespace MidiForwarder
 
         private static void ForwardEvent(MidiEvent midiEvent)
         {
+            if (MustFilterEvent(midiEvent)) return;
+
             lastEvent = midiEvent;
             if ("Midi events to network".Equals(outputDeviceName, System.StringComparison.InvariantCulture))
             {
@@ -247,7 +251,7 @@ namespace MidiForwarder
                     ConnectingLabel.Visible = false;
                     ConnectedLabel.Visible = true;
                 }
-                catch(CommsException ce)
+                catch (CommsException ce)
                 {
                     ConnectingLabel.Visible = false;
                     MessageBox.Show("CommsException occurs : " + ce.Message);
@@ -281,29 +285,6 @@ namespace MidiForwarder
             // do not add event to event log if there is no new one
             if (LastDisplayedEvent == lastEvent) return;
 
-            // do not add event to event log if its type is filtered
-            if (lastEvent != null)
-            {
-                switch (lastEvent.EventType)
-                {
-                    case MidiEventType.NoteOn:
-                        if (NoteOnCheckBox.Checked) return;
-                        break;
-                    case MidiEventType.NoteOff:
-                        if (NoteOffCheckBox.Checked) return;
-                        break;
-                    case MidiEventType.ChannelAftertouch:
-                        if (AftertouchCheckBox.Checked) return;
-                        break;
-                    case MidiEventType.PitchBend:
-                        if (PitchbendCheckBox.Checked) return;
-                        break;
-                    case MidiEventType.ControlChange:
-                        if (ControlChangeCheckBox.Checked) return;
-                        break;
-                }
-            }
-
             string displayEvtStr;
             if (outputDeviceName == null)
             {
@@ -321,10 +302,62 @@ namespace MidiForwarder
             LastDisplayedEvent = lastEvent;
         }
 
+        private static bool MustFilterEvent(MidiEvent midiEvent)
+        {
+            if (midiEvent != null)
+            {
+                switch (midiEvent.EventType)
+                {
+                    case MidiEventType.NormalSysEx: if (Settings.Default.FilterNormalSysEx) return true; break;
+                    case MidiEventType.EscapeSysEx: if (Settings.Default.FilterEscapeSysEx) return true; break;
+                    case MidiEventType.SequenceNumber: if (Settings.Default.FilterSequenceNumber) return true; break;
+                    case MidiEventType.Text: if (Settings.Default.FilterText) return true; break;
+                    case MidiEventType.CopyrightNotice: if (Settings.Default.FilterCopyrightNotice) return true; break;
+                    case MidiEventType.SequenceTrackName: if (Settings.Default.FilterSequenceTrackName) return true; break;
+                    case MidiEventType.InstrumentName: if (Settings.Default.FilterInstrumentName) return true; break;
+                    case MidiEventType.Lyric: if (Settings.Default.FilterLyric) return true; break;
+                    case MidiEventType.Marker: if (Settings.Default.FilterMarker) return true; break;
+                    case MidiEventType.CuePoint: if (Settings.Default.FilterCuePoint) return true; break;
+                    case MidiEventType.ProgramName: if (Settings.Default.FilterProgramName) return true; break;
+                    case MidiEventType.DeviceName: if (Settings.Default.FilterDeviceName) return true; break;
+                    case MidiEventType.ChannelPrefix: if (Settings.Default.FilterChannelPrefix) return true; break;
+                    case MidiEventType.PortPrefix: if (Settings.Default.FilterPortPrefix) return true; break;
+                    case MidiEventType.EndOfTrack: if (Settings.Default.FilterEndOfTrack) return true; break;
+                    case MidiEventType.SetTempo: if (Settings.Default.FilterSetTempo) return true; break;
+                    case MidiEventType.SmpteOffset: if (Settings.Default.FilterSmpteOffset) return true; break;
+                    case MidiEventType.TimeSignature: if (Settings.Default.FilterTimeSignature) return true; break;
+                    case MidiEventType.KeySignature: if (Settings.Default.FilterKeySignature) return true; break;
+                    case MidiEventType.SequencerSpecific: if (Settings.Default.FilterSequencerSpecific) return true; break;
+                    case MidiEventType.UnknownMeta: if (Settings.Default.FilterUnknownMeta) return true; break;
+                    case MidiEventType.CustomMeta: if (Settings.Default.FilterCustomMeta) return true; break;
+                    case MidiEventType.NoteOff: if (Settings.Default.FilterNoteOff) return true; break;
+                    case MidiEventType.NoteOn: if (Settings.Default.FilterNoteOn) return true; break;
+                    case MidiEventType.NoteAftertouch: if (Settings.Default.FilterNoteAftertouch) return true; break;
+                    case MidiEventType.ControlChange: if (Settings.Default.FilterControlChange) return true; break;
+                    case MidiEventType.ProgramChange: if (Settings.Default.FilterProgramChange) return true; break;
+                    case MidiEventType.ChannelAftertouch: if (Settings.Default.FilterChannelAftertouch) return true; break;
+                    case MidiEventType.PitchBend: if (Settings.Default.FilterPitchBend) return true; break;
+                    case MidiEventType.TimingClock: if (Settings.Default.FilterTimingClock) return true; break;
+                    case MidiEventType.Start: if (Settings.Default.FilterStart) return true; break;
+                    case MidiEventType.Continue: if (Settings.Default.FilterContinue) return true; break;
+                    case MidiEventType.Stop: if (Settings.Default.FilterStop) return true; break;
+                    case MidiEventType.ActiveSensing: if (Settings.Default.FilterActiveSensing) return true; break;
+                    case MidiEventType.Reset: if (Settings.Default.FilterReset) return true; break;
+                    case MidiEventType.MidiTimeCode: if (Settings.Default.FilterMidiTimeCode) return true; break;
+                    case MidiEventType.SongPositionPointer: if (Settings.Default.FilterSongPositionPointer) return true; break;
+                    case MidiEventType.SongSelect: if (Settings.Default.FilterSongSelect) return true; break;
+                    case MidiEventType.TuneRequest: if (Settings.Default.FilterTuneRequest) return true; break;
+                    default: return false;
+                }
+            }
+            return false;
+        }
+
         private void NoteOffButton_Click(object sender, EventArgs e)
         {
             if (outputDevice != null)
             {
+                outputDevice.SendEvent(new ResetEvent());
                 for (Byte i = 0; i < 128; i++)
                 {
                     outputDevice.SendEvent(new NoteOffEvent(new SevenBitNumber(i), new SevenBitNumber(0)));
@@ -334,17 +367,18 @@ namespace MidiForwarder
 
         private void MidiForwarderForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Settings.Default.Save();
             NetworkComms.Shutdown();
         }
 
         private void ApplyNetworkConfigButton_Click(object sender, EventArgs e)
         {
-            if (InputDevicesComboBox.SelectedIndex==1) InputDevicesComboBox.SelectedIndex = 0;
+            if (InputDevicesComboBox.SelectedIndex == 1) InputDevicesComboBox.SelectedIndex = 0;
             if (OutputDevicesComboBox.SelectedIndex == 1) OutputDevicesComboBox.SelectedIndex = 0;
 
-            MidiForwarder.Properties.Settings.Default.receivePort = ReceivePortTextBox.Text;
-            MidiForwarder.Properties.Settings.Default.sendIp = SendToIpTextBox.Text;
-            MidiForwarder.Properties.Settings.Default.sendPort = SendToPortTextBox.Text;
+            Settings.Default.receivePort = ReceivePortTextBox.Text;
+            Settings.Default.sendIp = SendToIpTextBox.Text;
+            Settings.Default.sendPort = SendToPortTextBox.Text;
 
         }
 
@@ -388,5 +422,59 @@ namespace MidiForwarder
             }
         }
 
+        private void FilterCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.FilterNormalSysEx = NormalSysExCheckBox.Checked;
+            Settings.Default.FilterEscapeSysEx = EscapeSysExCheckBox.Checked;
+            Settings.Default.FilterSequenceNumber = SequenceNumberCheckBox.Checked;
+            Settings.Default.FilterText = TextCheckBox.Checked;
+            Settings.Default.FilterCopyrightNotice = CopyrightNoticeCheckBox.Checked;
+            Settings.Default.FilterSequenceTrackName = SequenceTrackNameCheckBox.Checked;
+            Settings.Default.FilterInstrumentName = InstrumentNameCheckBox.Checked;
+            Settings.Default.FilterLyric = LyricCheckBox.Checked;
+            Settings.Default.FilterMarker = MarkerCheckBox.Checked;
+            Settings.Default.FilterCuePoint = CuePointCheckBox.Checked;
+            Settings.Default.FilterProgramName = ProgramNameCheckBox.Checked;
+            Settings.Default.FilterDeviceName = DeviceNameCheckBox.Checked;
+            Settings.Default.FilterChannelPrefix = ChannelPrefixCheckBox.Checked;
+            Settings.Default.FilterPortPrefix = PortPrefixCheckBox.Checked;
+            Settings.Default.FilterEndOfTrack = EndOfTrackCheckBox.Checked;
+            Settings.Default.FilterSetTempo = SetTempoCheckBox.Checked;
+            Settings.Default.FilterSmpteOffset = SmpteOffsetCheckBox.Checked;
+            Settings.Default.FilterTimeSignature = TimeSignatureCheckBox.Checked;
+            Settings.Default.FilterKeySignature = KeySignatureCheckBox.Checked;
+            Settings.Default.FilterSequencerSpecific = SequencerSpecificCheckBox.Checked;
+            Settings.Default.FilterUnknownMeta = UnknownMetaCheckBox.Checked;
+            Settings.Default.FilterCustomMeta = CustomMetaCheckBox.Checked;
+            Settings.Default.FilterNoteOff = NoteOffCheckBox.Checked;
+            Settings.Default.FilterNoteOn = NoteOnCheckBox.Checked;
+            Settings.Default.FilterNoteAftertouch = NoteAftertouchCheckBox.Checked;
+            Settings.Default.FilterControlChange = ControlChangeCheckBox.Checked;
+            Settings.Default.FilterProgramChange = ProgramChangeCheckBox.Checked;
+            Settings.Default.FilterChannelAftertouch = ChannelAftertouchCheckBox.Checked;
+            Settings.Default.FilterPitchBend = PitchBendCheckBox.Checked;
+            Settings.Default.FilterTimingClock = TimingClockCheckBox.Checked;
+            Settings.Default.FilterStart = StartCheckBox.Checked;
+            Settings.Default.FilterContinue = ContinueCheckBox.Checked;
+            Settings.Default.FilterStop = StopCheckBox.Checked;
+            Settings.Default.FilterActiveSensing = ActiveSensingCheckBox.Checked;
+            Settings.Default.FilterReset = ResetCheckBox.Checked;
+            Settings.Default.FilterMidiTimeCode = MidiTimeCodeCheckBox.Checked;
+            Settings.Default.FilterSongPositionPointer = SongPositionPointerCheckBox.Checked;
+            Settings.Default.FilterSongSelect = SongSelectCheckBox.Checked;
+            Settings.Default.FilterTuneRequest = TuneRequestCheckBox.Checked;
+        }
+
+        private void DisplayChangelogButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/Fabrice-Deshayes-aka-Xtream/MidiForwarder/blob/master/CHANGELOG.md");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error occured : " + exception.Message + ". You may not have defined a windows default web browser");
+            }
+        }
     }
 }

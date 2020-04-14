@@ -37,7 +37,7 @@ namespace MidiForwarder.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("90.29.249.75")]
+        [global::System.Configuration.DefaultSettingValueAttribute("x.x.x.x")]
         public string sendIp {
             get {
                 return ((string)(this["sendIp"]));
@@ -56,6 +56,474 @@ namespace MidiForwarder.Properties {
             }
             set {
                 this["sendPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterNormalSysEx {
+            get {
+                return ((bool)(this["FilterNormalSysEx"]));
+            }
+            set {
+                this["FilterNormalSysEx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterEscapeSysEx {
+            get {
+                return ((bool)(this["FilterEscapeSysEx"]));
+            }
+            set {
+                this["FilterEscapeSysEx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSequenceNumber {
+            get {
+                return ((bool)(this["FilterSequenceNumber"]));
+            }
+            set {
+                this["FilterSequenceNumber"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterText {
+            get {
+                return ((bool)(this["FilterText"]));
+            }
+            set {
+                this["FilterText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterCopyrightNotice {
+            get {
+                return ((bool)(this["FilterCopyrightNotice"]));
+            }
+            set {
+                this["FilterCopyrightNotice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSequenceTrackName {
+            get {
+                return ((bool)(this["FilterSequenceTrackName"]));
+            }
+            set {
+                this["FilterSequenceTrackName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterInstrumentName {
+            get {
+                return ((bool)(this["FilterInstrumentName"]));
+            }
+            set {
+                this["FilterInstrumentName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterLyric {
+            get {
+                return ((bool)(this["FilterLyric"]));
+            }
+            set {
+                this["FilterLyric"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterMarker {
+            get {
+                return ((bool)(this["FilterMarker"]));
+            }
+            set {
+                this["FilterMarker"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterCuePoint {
+            get {
+                return ((bool)(this["FilterCuePoint"]));
+            }
+            set {
+                this["FilterCuePoint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterProgramName {
+            get {
+                return ((bool)(this["FilterProgramName"]));
+            }
+            set {
+                this["FilterProgramName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterDeviceName {
+            get {
+                return ((bool)(this["FilterDeviceName"]));
+            }
+            set {
+                this["FilterDeviceName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterChannelPrefix {
+            get {
+                return ((bool)(this["FilterChannelPrefix"]));
+            }
+            set {
+                this["FilterChannelPrefix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterPortPrefix {
+            get {
+                return ((bool)(this["FilterPortPrefix"]));
+            }
+            set {
+                this["FilterPortPrefix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterEndOfTrack {
+            get {
+                return ((bool)(this["FilterEndOfTrack"]));
+            }
+            set {
+                this["FilterEndOfTrack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSetTempo {
+            get {
+                return ((bool)(this["FilterSetTempo"]));
+            }
+            set {
+                this["FilterSetTempo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSmpteOffset {
+            get {
+                return ((bool)(this["FilterSmpteOffset"]));
+            }
+            set {
+                this["FilterSmpteOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterTimeSignature {
+            get {
+                return ((bool)(this["FilterTimeSignature"]));
+            }
+            set {
+                this["FilterTimeSignature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterKeySignature {
+            get {
+                return ((bool)(this["FilterKeySignature"]));
+            }
+            set {
+                this["FilterKeySignature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSequencerSpecific {
+            get {
+                return ((bool)(this["FilterSequencerSpecific"]));
+            }
+            set {
+                this["FilterSequencerSpecific"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterUnknownMeta {
+            get {
+                return ((bool)(this["FilterUnknownMeta"]));
+            }
+            set {
+                this["FilterUnknownMeta"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterCustomMeta {
+            get {
+                return ((bool)(this["FilterCustomMeta"]));
+            }
+            set {
+                this["FilterCustomMeta"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterNoteOff {
+            get {
+                return ((bool)(this["FilterNoteOff"]));
+            }
+            set {
+                this["FilterNoteOff"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterNoteOn {
+            get {
+                return ((bool)(this["FilterNoteOn"]));
+            }
+            set {
+                this["FilterNoteOn"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterNoteAftertouch {
+            get {
+                return ((bool)(this["FilterNoteAftertouch"]));
+            }
+            set {
+                this["FilterNoteAftertouch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterControlChange {
+            get {
+                return ((bool)(this["FilterControlChange"]));
+            }
+            set {
+                this["FilterControlChange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterProgramChange {
+            get {
+                return ((bool)(this["FilterProgramChange"]));
+            }
+            set {
+                this["FilterProgramChange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterChannelAftertouch {
+            get {
+                return ((bool)(this["FilterChannelAftertouch"]));
+            }
+            set {
+                this["FilterChannelAftertouch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterPitchBend {
+            get {
+                return ((bool)(this["FilterPitchBend"]));
+            }
+            set {
+                this["FilterPitchBend"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterTimingClock {
+            get {
+                return ((bool)(this["FilterTimingClock"]));
+            }
+            set {
+                this["FilterTimingClock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterStart {
+            get {
+                return ((bool)(this["FilterStart"]));
+            }
+            set {
+                this["FilterStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterContinue {
+            get {
+                return ((bool)(this["FilterContinue"]));
+            }
+            set {
+                this["FilterContinue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterStop {
+            get {
+                return ((bool)(this["FilterStop"]));
+            }
+            set {
+                this["FilterStop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterActiveSensing {
+            get {
+                return ((bool)(this["FilterActiveSensing"]));
+            }
+            set {
+                this["FilterActiveSensing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterReset {
+            get {
+                return ((bool)(this["FilterReset"]));
+            }
+            set {
+                this["FilterReset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterMidiTimeCode {
+            get {
+                return ((bool)(this["FilterMidiTimeCode"]));
+            }
+            set {
+                this["FilterMidiTimeCode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSongPositionPointer {
+            get {
+                return ((bool)(this["FilterSongPositionPointer"]));
+            }
+            set {
+                this["FilterSongPositionPointer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterSongSelect {
+            get {
+                return ((bool)(this["FilterSongSelect"]));
+            }
+            set {
+                this["FilterSongSelect"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterTuneRequest {
+            get {
+                return ((bool)(this["FilterTuneRequest"]));
+            }
+            set {
+                this["FilterTuneRequest"] = value;
             }
         }
     }

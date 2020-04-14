@@ -129,6 +129,19 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>483, 17</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Xtream Midi Forwarder is a client/server software.
+It listen to midi events on a specified port coming from another instance of Midi Forwarder
+(on local network or from Internet). 
+
+If you want to receive Midi events from a friend's Midi Forwarder instance over Internet:
+- Choose a receive port (for example 1666)
+- Configure Port Address Translation (PAT) on your internet box to redirect incoming Internet TCP/UDP 
+   requests on port 1666 to your PC local ip address (port 1666 too).
+- give him your public IP adress+port (1666).
+
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="NoteOffButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -150,19 +163,6 @@
         daO8pBz+HO9J6omiuDgCvCliSs6WN53GlRkHYOw0o7d/EFYa1msdQLf5Fr40mpCbnQ03F+cpqi2kCCju
         FKZ8KMGUJErL1k0b70ZKxROKA4q5TKVyLvbd6En21s136Vvzfxo/CosQQv4BicIPwQDMpQIAAAAASUVO
         RK5CYII=
-</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Xtream Midi Forwarder is a client/server software.
-It listen to midi events on a specified port coming from another instance of Midi Forwarder
-(on local network or from Internet). 
-
-If you want to receive Midi events from a friend's Midi Forwarder instance over Internet:
-- Choose a receive port (for example 1666)
-- Configure Port Address Translation (PAT) on your internet box to redirect incoming Internet TCP/UDP 
-   requests on port 1666 to your PC local ip address (port 1666 too).
-- give him your public IP adress+port (1666).
-
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

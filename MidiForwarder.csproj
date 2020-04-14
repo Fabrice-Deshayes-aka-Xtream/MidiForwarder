@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DIN_black.ico" />
+    <None Include="Resources\Octocat.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
