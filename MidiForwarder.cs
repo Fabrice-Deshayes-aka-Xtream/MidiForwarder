@@ -13,7 +13,7 @@ using NetworkCommsDotNet;
 using NetworkCommsDotNet.Connections;
 using NetworkCommsDotNet.Connections.TCP;
 
-namespace MidiRouter
+namespace MidiForwarder
 {
     public partial class MidiForwarderForm : Form
     {
@@ -98,7 +98,7 @@ namespace MidiRouter
 
         private void MidiEventListener_DoWork(object sender, DoWorkEventArgs e)
         {
-            if ("Midi events from network".Equals(inputDeviceName))
+            if ("Midi events from network".Equals(inputDeviceName, System.StringComparison.InvariantCulture))
             {
                 try
                 {
@@ -162,7 +162,7 @@ namespace MidiRouter
         private static void ForwardEvent(MidiEvent midiEvent)
         {
             lastEvent = midiEvent;
-            if ("Midi events to network".Equals(outputDeviceName))
+            if ("Midi events to network".Equals(outputDeviceName, System.StringComparison.InvariantCulture))
             {
                 try
                 {
@@ -366,7 +366,7 @@ namespace MidiRouter
             try
             {
                 String direction = "";
-                WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
+                WebRequest request = WebRequest.Create(new Uri("http://checkip.dyndns.org/"));
                 using (WebResponse response = request.GetResponse())
                 {
                     using (StreamReader stream = new StreamReader(response.GetResponseStream()))
@@ -376,8 +376,8 @@ namespace MidiRouter
                 }
 
                 //Search for the ip in the html
-                int first = direction.IndexOf("Address: ") + 9;
-                int last = direction.LastIndexOf("</body>");
+                int first = direction.IndexOf("Address: ", System.StringComparison.InvariantCulture) + 9;
+                int last = direction.LastIndexOf("</body>", System.StringComparison.InvariantCulture);
                 direction = direction.Substring(first, last - first);
 
                 return direction;

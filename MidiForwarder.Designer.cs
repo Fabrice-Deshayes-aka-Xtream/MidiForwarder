@@ -1,4 +1,4 @@
-﻿namespace MidiRouter
+﻿namespace MidiForwarder
 {
     partial class MidiForwarderForm
     {
